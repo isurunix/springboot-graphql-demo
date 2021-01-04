@@ -1,10 +1,10 @@
-package com.isurunix.graphqldemo.entity;
+package com.isurunix.graphqldemo.domain;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "registered_service")
-public class RegisteredService {
+@Table(name = "app_subscription")
+public class AppSubscription {
     @Id
     @GeneratedValue
     private Long id;
@@ -14,8 +14,8 @@ public class RegisteredService {
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "service_id", referencedColumnName = "service_id")
-    private PortalService service;
+    @JoinColumn(name = "app_id", referencedColumnName = "app_id")
+    private App app;
 
     @Column(name = "status")
     private Short status;
@@ -36,12 +36,12 @@ public class RegisteredService {
         this.customer = customer;
     }
 
-    public PortalService getService() {
-        return service;
+    public App getApp() {
+        return app;
     }
 
-    public void setService(PortalService service) {
-        this.service = service;
+    public void setApp(App app) {
+        this.app = app;
     }
 
     public Short getStatus() {

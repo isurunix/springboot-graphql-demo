@@ -4,4 +4,7 @@ schema {
 
 type Query {
     findAllCustomers: [Customer!]!
+    findAllApps: [App!]!
+    findAppById(appId: Int!): App
+    findAllAppSubscriptions(customerId: String!, status: Int): [AppSubscription!]!
 }

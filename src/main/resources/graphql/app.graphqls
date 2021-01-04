@@ -1,0 +1,11 @@
+type App {
+    appId: Int!
+    appName: String!
+}
+
+type AppSubscription {
+    id: Int!
+    customer: Customer!
+    app: App!
+    status: Int!
+}

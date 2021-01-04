@@ -1,4 +1,4 @@
-package com.isurunix.graphqldemo.entity;
+package com.isurunix.graphqldemo.domain;
 
 import javax.persistence.*;
 

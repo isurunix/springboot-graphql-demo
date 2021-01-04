@@ -1,0 +1,5 @@
+type User {
+    userId: Int!
+    username: String!
+    password: String!
+}
