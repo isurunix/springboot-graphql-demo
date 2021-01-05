@@ -11,6 +11,6 @@ type AppSubscription {
 }
 
 input CreateAppSubscriptionInput {
-    customerCode: String!
+    customerCode: Int!
     appId: Int!
 }

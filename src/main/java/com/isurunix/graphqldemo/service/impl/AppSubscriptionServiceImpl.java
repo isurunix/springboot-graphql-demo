@@ -31,7 +31,7 @@ public class AppSubscriptionServiceImpl implements AppSubscriptionService {
     }
 
     @Override
-    public List<AppSubscription> findAllAppSubscriptions(String customerId, Integer status) {
+    public List<AppSubscription> findAllAppSubscriptions(Integer customerId, Integer status) {
         log.info("Fetching all app subscriptions,customerId:[{}], status:[{}]", customerId, status);
         List<AppSubscription> subscriptions = appSubscriptionRepository.findAllByCustomerCodeAndStatus(customerId, status);
         log.info("Fetched [{}] subscriptions", subscriptions.size());

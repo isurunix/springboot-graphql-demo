@@ -6,7 +6,7 @@ import com.isurunix.graphqldemo.dto.CreateAppSubscriptionInput;
 import java.util.List;
 
 public interface AppSubscriptionService {
-    List<AppSubscription> findAllAppSubscriptions(String customerId, Integer status);
+    List<AppSubscription> findAllAppSubscriptions(Integer customerId, Integer status);
     AppSubscription updateAppSubscription(AppSubscription subscription);
     AppSubscription createAppSubscription(CreateAppSubscriptionInput subscription);
 }

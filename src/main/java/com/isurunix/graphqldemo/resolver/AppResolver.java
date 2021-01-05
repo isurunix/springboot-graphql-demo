@@ -9,7 +9,6 @@ import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -31,7 +30,7 @@ class AppQueryResolver implements GraphQLQueryResolver {
         return appService.findAppById(appId);
     }
 
-    public List<AppSubscription> findAllAppSubscriptions(String customerId, Integer status){
+    public List<AppSubscription> findAllAppSubscriptions(Integer customerId, Integer status){
         return appSubscriptionService.findAllAppSubscriptions(customerId, status);
     }
 }

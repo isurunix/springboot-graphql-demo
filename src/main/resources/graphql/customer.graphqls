@@ -1,5 +1,5 @@
 type Customer {
-    customerCode: String!
+    customerCode: Int!
     contactNo: String!
     address: String!
     user: User!

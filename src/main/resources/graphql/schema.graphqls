@@ -7,10 +7,13 @@ type Query {
     findAllCustomers: [Customer!]!
     findAllApps: [App!]!
     findAppById(appId: Int!): App
-    findAllAppSubscriptions(customerId: String!, status: Int): [AppSubscription!]!
+    findAllAppSubscriptions(customerId: Int!, status: Int): [AppSubscription!]!
     findAllAgents: [Agent!]!
 }
 
 type Mutation {
     saveAppSubscription(input: CreateAppSubscriptionInput): AppSubscription!
+    saveCustomer(username: String!, password: String!, contactNo: String!, address:String!): Customer!
+    deleteCustomer(customerCode: Int!): Boolean!
+    updateCustomer(customerCode: Int!, contactNo: String!, address: String!): Customer!
 }

@@ -13,6 +13,6 @@ public interface AppSubscriptionRepository extends JpaRepository<AppSubscription
 
     @Query("from AppSubscription a where a.customer.customerCode=:customerCode and " +
             ":status = -1 or (:status <> -1 and a.status=:status)")
-    List<AppSubscription> findAllByCustomerCodeAndStatus(@Param("customerCode") String customerCode,
+    List<AppSubscription> findAllByCustomerCodeAndStatus(@Param("customerCode") Integer customerCode,
                                                          @Param("status") Integer status);
 }

@@ -38,7 +38,18 @@ class CustomerMutationResolver implements GraphQLMutationResolver {
         this.customerService = customerService;
     }
 
-    public void saveCustomer(CustomerDTO customer){
+    public Customer saveCustomer(String username, String password, String contactNo, String address){
+        LOGGER.info("Creating new customer, [{},{},{},{}]", username, password, contactNo, address);
+        return customerService.createCustomer(username, password, contactNo, address);
+    }
 
+    public Boolean deleteCustomer(Integer customerCode) {
+        LOGGER.info("Deleting customer: [{}]", customerCode);
+        return customerService.deleteCustomer(customerCode);
+    }
+
+    public Customer updateCustomer(Integer customerCode, String contactNo, String address){
+        LOGGER.info("Updating customer: [{}, /{{},{}/}]", customerCode, contactNo, address);
+        return customerService.updateCustomer(customerCode, contactNo, address);
     }
 }

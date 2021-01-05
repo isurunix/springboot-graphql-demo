@@ -7,8 +7,9 @@ import javax.persistence.*;
 public class Customer {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_code")
-    private String customerCode;
+    private Integer customerCode;
 
     @Column(name = "contact_no")
     private String contactNo;
@@ -16,15 +17,24 @@ public class Customer {
     @Column(name = "address", length = 500)
     private String address;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
-    public String getCustomerCode() {
+    public Customer() {
+    }
+
+    public Customer(String contactNo, String address, User user) {
+        this.contactNo = contactNo;
+        this.address = address;
+        this.user = user;
+    }
+
+    public Integer getCustomerCode() {
         return customerCode;
     }
 
-    public void setCustomerCode(String customerCode) {
+    public void setCustomerCode(Integer customerCode) {
         this.customerCode = customerCode;
     }
 

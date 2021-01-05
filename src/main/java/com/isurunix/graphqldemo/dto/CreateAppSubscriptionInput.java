@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class CreateAppSubscriptionInput {
-    private String customerCode;
+    private Integer customerCode;
     private Integer appId;
 }
