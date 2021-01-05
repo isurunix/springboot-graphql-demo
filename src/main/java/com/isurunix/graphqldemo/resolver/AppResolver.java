@@ -2,6 +2,7 @@ package com.isurunix.graphqldemo.resolver;
 
 import com.isurunix.graphqldemo.domain.App;
 import com.isurunix.graphqldemo.domain.AppSubscription;
+import com.isurunix.graphqldemo.dto.CreateAppSubscriptionInput;
 import com.isurunix.graphqldemo.service.AppService;
 import com.isurunix.graphqldemo.service.AppSubscriptionService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
@@ -37,5 +38,15 @@ class AppQueryResolver implements GraphQLQueryResolver {
 
 @Component
 class AppMutationResolver implements GraphQLMutationResolver {
+    private final AppService appService;
+    private final AppSubscriptionService appSubscriptionService;
 
+    public AppMutationResolver(AppService appService, AppSubscriptionService appSubscriptionService) {
+        this.appService = appService;
+        this.appSubscriptionService = appSubscriptionService;
+    }
+
+    public AppSubscription saveAppSubscription(CreateAppSubscriptionInput input){
+        return appSubscriptionService.createAppSubscription(input);
+    }
 }

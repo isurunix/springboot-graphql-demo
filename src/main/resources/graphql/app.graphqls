@@ -9,3 +9,8 @@ type AppSubscription {
     app: App!
     status: Int!
 }
+
+input CreateAppSubscriptionInput {
+    customerCode: String!
+    appId: Int!
+}

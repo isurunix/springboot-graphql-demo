@@ -1,5 +1,6 @@
 schema {
     query: Query
+    mutation: Mutation
 }
 
 type Query {
@@ -8,4 +9,8 @@ type Query {
     findAppById(appId: Int!): App
     findAllAppSubscriptions(customerId: String!, status: Int): [AppSubscription!]!
     findAllAgents: [Agent!]!
+}
+
+type Mutation {
+    saveAppSubscription(input: CreateAppSubscriptionInput): AppSubscription!
 }
