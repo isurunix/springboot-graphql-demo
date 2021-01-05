@@ -45,7 +45,7 @@ class AppMutationResolver implements GraphQLMutationResolver {
         this.appSubscriptionService = appSubscriptionService;
     }
 
-    public AppSubscription saveAppSubscription(CreateAppSubscriptionInput input){
+    public AppSubscription createAppSubscription(CreateAppSubscriptionInput input){
         return appSubscriptionService.createAppSubscription(input);
     }
 }

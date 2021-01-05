@@ -1,7 +1,6 @@
 package com.isurunix.graphqldemo.resolver;
 
 import com.isurunix.graphqldemo.domain.Customer;
-import com.isurunix.graphqldemo.dto.user.CustomerDTO;
 import com.isurunix.graphqldemo.service.CustomerService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.kickstart.tools.GraphQLQueryResolver;
@@ -38,7 +37,7 @@ class CustomerMutationResolver implements GraphQLMutationResolver {
         this.customerService = customerService;
     }
 
-    public Customer saveCustomer(String username, String password, String contactNo, String address){
+    public Customer createCustomer(String username, String password, String contactNo, String address){
         LOGGER.info("Creating new customer, [{},{},{},{}]", username, password, contactNo, address);
         return customerService.createCustomer(username, password, contactNo, address);
     }

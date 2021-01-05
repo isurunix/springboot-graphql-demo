@@ -12,8 +12,8 @@ type Query {
 }
 
 type Mutation {
-    saveAppSubscription(input: CreateAppSubscriptionInput): AppSubscription!
-    saveCustomer(username: String!, password: String!, contactNo: String!, address:String!): Customer!
+    createAppSubscription(input: CreateAppSubscriptionInput): AppSubscription!
+    createCustomer(username: String!, password: String!, contactNo: String!, address:String!): Customer!
     deleteCustomer(customerCode: Int!): Boolean!
     updateCustomer(customerCode: Int!, contactNo: String!, address: String!): Customer!
 }

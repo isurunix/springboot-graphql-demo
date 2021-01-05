@@ -2,7 +2,6 @@ package com.isurunix.graphqldemo.service.impl;
 
 import com.isurunix.graphqldemo.domain.Customer;
 import com.isurunix.graphqldemo.domain.User;
-import com.isurunix.graphqldemo.dto.user.CustomerDTO;
 import com.isurunix.graphqldemo.exceptions.DuplicateResourceException;
 import com.isurunix.graphqldemo.exceptions.ResourceNotFoundException;
 import com.isurunix.graphqldemo.repository.CustomerRepository;
@@ -34,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional
     public Customer createCustomer(String username, String password, String contactNo, String address) {
         if(userRepository.findByUsername(username).isPresent()){
-            throw new DuplicateResourceException("Username already take. Please choose another");
+            throw new DuplicateResourceException("Username already taken. Please choose another");
         }
         User user = userRepository.save(new User(username, password));
         return customerRepository.save(new Customer(contactNo, address, user));
