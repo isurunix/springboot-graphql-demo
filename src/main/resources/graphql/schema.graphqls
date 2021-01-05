@@ -7,4 +7,5 @@ type Query {
     findAllApps: [App!]!
     findAppById(appId: Int!): App
     findAllAppSubscriptions(customerId: String!, status: Int): [AppSubscription!]!
+    findAllAgents: [Agent!]!
 }

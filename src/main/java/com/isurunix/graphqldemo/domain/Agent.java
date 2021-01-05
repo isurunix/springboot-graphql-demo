@@ -10,6 +10,6 @@ public class Agent {
     @Column(name = "agent_id")
     private Long agentId;
 
-    @Column(name = "name")
+    @Column(name = "agent_name")
     private String agentName;
 }
