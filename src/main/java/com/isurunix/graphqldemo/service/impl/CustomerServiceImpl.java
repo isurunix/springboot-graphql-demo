@@ -7,6 +7,7 @@ import com.isurunix.graphqldemo.exceptions.ResourceNotFoundException;
 import com.isurunix.graphqldemo.repository.CustomerRepository;
 import com.isurunix.graphqldemo.repository.UserRepository;
 import com.isurunix.graphqldemo.service.CustomerService;
+import com.isurunix.graphqldemo.service.UserDetailService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -17,11 +18,14 @@ public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository customerRepository;
     private final UserRepository userRepository;
+    private final UserDetailService userDetailService;
 
     public CustomerServiceImpl(CustomerRepository customerRepository,
-                               UserRepository userRepository) {
+                               UserRepository userRepository,
+                               UserDetailService userDetailService) {
         this.customerRepository = customerRepository;
         this.userRepository = userRepository;
+        this.userDetailService = userDetailService;
     }
 
     @Override
@@ -35,7 +39,7 @@ public class CustomerServiceImpl implements CustomerService {
         if(userRepository.findByUsername(username).isPresent()){
             throw new DuplicateResourceException("Username already taken. Please choose another");
         }
-        User user = userRepository.save(new User(username, password));
+        User user = userDetailService.createUser(username,password);
         return customerRepository.save(new Customer(contactNo, address, user));
     }
 

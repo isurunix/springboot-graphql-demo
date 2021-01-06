@@ -6,6 +6,7 @@ import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,6 +20,8 @@ class CustomerQueryResolver implements GraphQLQueryResolver {
     public CustomerQueryResolver(CustomerService customerService) {
         this.customerService = customerService;
     }
+
+    @PreAuthorize("isAuthenticated()")
 
     public List<Customer> findAllCustomers(){
         LOGGER.info("Requesting all customers");
@@ -37,6 +40,7 @@ class CustomerMutationResolver implements GraphQLMutationResolver {
         this.customerService = customerService;
     }
 
+    @PreAuthorize("isAnonymous()")
     public Customer createCustomer(String username, String password, String contactNo, String address){
         LOGGER.info("Creating new customer, [{},{},{},{}]", username, password, contactNo, address);
         return customerService.createCustomer(username, password, contactNo, address);
