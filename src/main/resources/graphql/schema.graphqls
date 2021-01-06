@@ -12,6 +12,7 @@ type Query {
 }
 
 type Mutation {
+    login(username: String!, password: String!): LoginResponse!
     createAppSubscription(input: CreateAppSubscriptionInput): AppSubscription!
     createCustomer(username: String!, password: String!, contactNo: String!, address:String!): Customer!
     deleteCustomer(customerCode: Int!): Boolean!

@@ -3,3 +3,8 @@ type User {
     username: String!
     password: String!
 }
+
+type LoginResponse {
+    username: String!
+    token: String!
+}
