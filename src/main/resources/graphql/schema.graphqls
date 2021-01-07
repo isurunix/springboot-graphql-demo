@@ -4,17 +4,47 @@ schema {
 }
 
 type Query {
+    """
+    Get list of all registered customers
+    """
     findAllCustomers: [Customer!]!
+    """
+    Get list of all available apps
+    """
     findAllApps: [App!]!
+    """
+    Get an app by application Id
+    """
     findAppById(appId: Int!): App
+    """
+    Get all app subcriptions
+    """
     findAllAppSubscriptions(customerId: Int!, status: Int): [AppSubscription!]!
+    """
+    Get all agents
+    """
     findAllAgents: [Agent!]!
 }
 
 type Mutation {
+    """
+    Authenticate user
+    """
     login(username: String!, password: String!): LoginResponse!
+    """
+    Create new app subscription
+    """
     createAppSubscription(input: CreateAppSubscriptionInput): AppSubscription!
+    """
+    Create new customer
+    """
     createCustomer(username: String!, password: String!, contactNo: String!, address:String!): Customer!
+    """
+    Deletes an existing customer
+    """
     deleteCustomer(customerCode: Int!): Boolean!
+    """
+    Updates an existing customer
+    """
     updateCustomer(customerCode: Int!, contactNo: String!, address: String!): Customer!
 }

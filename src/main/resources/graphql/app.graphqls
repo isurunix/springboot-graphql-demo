@@ -1,8 +1,14 @@
+"""
+Application in the portal
+"""
 type App {
     appId: Int!
     appName: String!
 }
 
+"""
+A app subscription made by a customer
+"""
 type AppSubscription {
     id: Int!
     customer: Customer!
@@ -10,6 +16,9 @@ type AppSubscription {
     status: Int!
 }
 
+"""
+Details to create a new app subscription
+"""
 input CreateAppSubscriptionInput {
     customerCode: Int!
     appId: Int!

@@ -1,6 +1,21 @@
+"""
+Details of a customer registered in the portal
+"""
 type Customer {
+    """
+    Unique code identifying the customer
+    """
     customerCode: Int!
+    """
+    Customer contact number
+    """
     contactNo: String!
+    """
+    Customer address
+    """
     address: String!
+    """
+    User account for the customer
+    """
     user: User!
 }

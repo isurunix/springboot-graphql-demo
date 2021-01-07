@@ -1,10 +1,32 @@
+"""
+User account details of a user in the portal
+"""
 type User {
+    """
+    System generated unique id
+    """
     userId: Int!
+    """
+    Username for the account
+    """
     username: String!
+    """
+    Account password
+    """
     password: String!
 }
 
+"""
+Login request response
+Provides JWT token for the logged user
+"""
 type LoginResponse {
+    """
+    Username of the logged user
+    """
     username: String!
+    """
+    JWT token for the current login
+    """
     token: String!
 }
