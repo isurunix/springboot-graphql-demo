@@ -4,6 +4,7 @@ import com.isurunix.graphqldemo.domain.Customer;
 import com.isurunix.graphqldemo.domain.User;
 import com.isurunix.graphqldemo.dto.LoginResponse;
 import com.isurunix.graphqldemo.security.JWTUserDetails;
+import com.isurunix.graphqldemo.service.CustomerService;
 import com.isurunix.graphqldemo.service.UserDetailService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import lombok.RequiredArgsConstructor;
@@ -23,14 +24,17 @@ class UserMutationResolver implements GraphQLMutationResolver {
     private final static Logger LOGGER = LoggerFactory.getLogger(UserMutationResolver.class);
     private final UserDetailService userDetailService;
     private final AuthenticationProvider authenticationProvider;
+    private final CustomerService customerService;
 
     @PreAuthorize("isAnonymous()")
     public LoginResponse login(String username, String password) {
         UsernamePasswordAuthenticationToken credentials = new UsernamePasswordAuthenticationToken(username, password);
         try {
             SecurityContextHolder.getContext().setAuthentication(authenticationProvider.authenticate(credentials));
-            JWTUserDetails userDetails = userDetailService.findUserByUsername(userDetailService.getCurrentUser().getUsername());
-            return new LoginResponse(userDetailService.getCurrentUser().getUsername(), userDetails.getToken());
+            String currentUser = userDetailService.getCurrentUser().getUsername();
+            JWTUserDetails userDetails = userDetailService.findUserByUsername(currentUser);
+            return new LoginResponse(currentUser,
+                    customerService.findCustomerByUsername(currentUser),userDetails.getToken());
         } catch (AuthenticationException ex) {
             LOGGER.error("Error authenticating user", ex);
             throw new BadCredentialsException("Username or password is incorrect");

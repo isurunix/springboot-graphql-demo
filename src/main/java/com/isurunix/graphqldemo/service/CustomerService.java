@@ -1,6 +1,7 @@
 package com.isurunix.graphqldemo.service;
 
 import com.isurunix.graphqldemo.domain.Customer;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -36,4 +37,6 @@ public interface CustomerService {
      * @return  the updated customer
      */
     Customer updateCustomer(Integer customerCode, String contactNo, String address);
+
+    Customer findCustomerByUsername(@Param("username") String username);
 }

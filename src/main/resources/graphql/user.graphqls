@@ -25,6 +25,12 @@ type LoginResponse {
     Username of the logged user
     """
     username: String!
+
+    """
+    User profile details
+    """
+    profile: Customer!
+
     """
     JWT token for the current login
     """

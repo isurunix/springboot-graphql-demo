@@ -112,6 +112,7 @@ public class UserDetailServiceImpl implements UserDetailService {
                 .withIssuedAt(Date.from(now))
                 .withExpiresAt(Date.from(expiry))
                 .withSubject(user.getUsername())
+                .withClaim("uid", user.getUserId())
                 .sign(algorithm);
     }
 
