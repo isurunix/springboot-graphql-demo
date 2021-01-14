@@ -6,3 +6,5 @@ insert into app(app_id,app_name) values (2,'Star Alerts');
 
 insert into agent(agent_id, agent_name) values (1,'Agent 1');
 insert into agent(agent_id, agent_name) values (2,'Agent 2');
+
+insert into app_subscription(app_id, cust_code, status) values (1,1,1);
