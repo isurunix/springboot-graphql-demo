@@ -59,4 +59,10 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setContactNo(contactNo);
         return customerRepository.save(customer);
     }
+
+    @Override
+    public Customer findCustomerByUsername(String username) {
+        return customerRepository.findByUser_Username(username)
+                .orElseThrow(() -> new ResourceNotFoundException("No customer profile for user: [" + username + "]"));
+    }
 }

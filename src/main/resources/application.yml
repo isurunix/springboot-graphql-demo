@@ -1,22 +1,33 @@
 spring:
   h2:
     console:
+      # enables h2 web console
       enabled: true
+      # h2 web console path
       path: /h2
       settings:
+        # h2 web console admin password
         web-admin-password: 1234
 
   datasource:
+    # datasource url
     url: jdbc:h2:mem:testdb
+    # database driver class
     driverClassName: org.h2.Driver
+    # database user
     username: sa
+    # database user password
     password:
 
   jpa:
+    # database hibernate dialect
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
+      # specify whether to create the database on application start
+      # create-drop - drop existing database and create on start
       ddl-auto: create-drop
 
 graphql:
   servlet:
+    # graphql endpoint url
     mapping: /graphql
